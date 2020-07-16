@@ -29,13 +29,14 @@
   background-color: #cfd8dc;
   display: flex;
   justify-content: space-between;
-  height: 80px;
+  height: 70px;
   box-shadow: 5px 5px rgba(0, 0, 0, 0.2);
   align-items: center;
 }
 
 .mat-form-field {
   padding-right: 20px;
+  max-height: 65px;
 }
 
 .container-label {
