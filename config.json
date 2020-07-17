@@ -1,0 +1,9 @@
+{
+  "language": "pl",
+  "api": "http: //192.168.1.190:8005/",
+  "adminSuffix": "admin/",
+  "languages": {
+    "PL": "pl",
+    "EN": "en"
+  }
+}
