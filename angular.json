@@ -1,35 +1,52 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "projects",
   "projects": {
     "gitlab-helper": {
       "projectType": "application",
       "schematics": {
-        "@schematics/angular:component": {
+        "@nrwl/angular:component": {
           "style": "scss"
         }
       },
-      "root": "",
-      "sourceRoot": "src",
-      "prefix": "app",
+      "root": "apps/gitlab-helper",
+      "sourceRoot": "apps/gitlab-helper/src",
+      "prefix": "gitlab-helper",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/gitlab-helper",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
-            "aot": false,
+            "outputPath": "dist/gitlab-helper/browser",
+            "index": "apps/gitlab-helper/src/index.html",
+            "main": "apps/gitlab-helper/src/main.ts",
+            "polyfills": "apps/gitlab-helper/src/polyfills.ts",
+            "tsConfig": "apps/gitlab-helper/tsconfig.app.json",
+            "aot": true,
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "apps/gitlab-helper/src/favicon.ico",
+              "apps/gitlab-helper/src/assets",
+              {
+                "glob": "robots.txt",
+                "input": "./resources/assets",
+                "output": "/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./resources/assets",
+                "output": "/assets/"
+              },
+              {
+                "glob": "config.json",
+                "input": "apps/gitlab-helper/src/config/",
+                "output": "/"
+              }
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.scss"
+              "./node_modules/normalize.css/normalize.css",
+              "resources/styles/styles.scss",
+              "apps/gitlab-helper/src/styles.scss",
+              {
+                "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+              }
             ],
             "scripts": []
           },
@@ -37,8 +54,12 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "apps/gitlab-helper/src/environments/environment.ts",
+                  "with": "apps/gitlab-helper/src/environments/environment.prod.ts"
+                },
+                {
+                  "replace": "apps/gitlab-helper/src/config/config.json",
+                  "with": "apps/gitlab-helper/src/config/config.prod.json"
                 }
               ],
               "optimization": true,
@@ -46,7 +67,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -82,41 +102,83 @@
             "browserTarget": "gitlab-helper:build"
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.scss"
-            ],
-            "scripts": []
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["apps/gitlab-helper/tsconfig.app.json", "apps/gitlab-helper/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/gitlab-helper/**/*"]
           }
         },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
+        "test": {
+          "builder": "@nrwl/jest:jest",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
+            "jestConfig": "apps/gitlab-helper/jest.config.js",
+            "tsConfig": "apps/gitlab-helper/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/gitlab-helper/src/test-setup.ts"
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/gitlab-helper/server",
+            "main": "apps/gitlab-helper/server.ts",
+            "tsConfig": "apps/gitlab-helper/tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "apps/gitlab-helper/src/environments/environment.ts",
+                  "with": "apps/gitlab-helper/src/environments/environment.prod.ts"
+                },
+                {
+                  "replace": "apps/gitlab-helper/src/config/config.json",
+                  "with": "apps/gitlab-helper/src/config/config.prod.json"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "gitlab-helper:build",
+            "serverTarget": "gitlab-helper:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "gitlab-helper:build:production",
+              "serverTarget": "gitlab-helper:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "gitlab-helper:build:production",
+            "serverTarget": "gitlab-helper:server:production",
+            "routes": ["/"]
+          },
+          "configurations": {
+            "production": {}
+          }
+        }
+      }
+    },
+    "gitlab-helper-e2e": {
+      "root": "apps/gitlab-helper-e2e",
+      "sourceRoot": "apps/gitlab-helper-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/gitlab-helper-e2e/cypress.json",
+            "tsConfig": "apps/gitlab-helper-e2e/tsconfig.e2e.json",
             "devServerTarget": "gitlab-helper:serve"
           },
           "configurations": {
@@ -124,8 +186,34 @@
               "devServerTarget": "gitlab-helper:serve:production"
             }
           }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/gitlab-helper-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/gitlab-helper-e2e/**/*"]
+          }
         }
       }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/schematics:library": {
+      "style": "scss"
+    },
+    "@nrwl/schematics:application": {
+      "style": "scss",
+      "framework": "angular"
     }
   },
   "defaultProject": "gitlab-helper"
