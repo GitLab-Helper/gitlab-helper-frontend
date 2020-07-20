@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { BoardComponent } from './board.component';
 
 /**
- * Home routes
+ * Board routes
  */
 const routes: Routes = [
   {

@@ -4,7 +4,6 @@ import { BoardComponent } from './board.component';
 import { BoardListComponent } from './board-list/board-list.component';
 import { BoardRoutingModule } from './board-routing.module';
 import { SharedModule } from '@app/shared/shared.module';
-import { FormControl, FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({

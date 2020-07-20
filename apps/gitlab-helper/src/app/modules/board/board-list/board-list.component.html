@@ -27,7 +27,6 @@
       <button class="x-button" (click)="closeDetails()">X</button>
     </div>
     <markdown [data]="issueDetails.description" *ngIf="issueDetails.description"></markdown>
-    <!-- <p *ngIf="issueDetails.description">{{issueDetails.description}}</p> -->
     <p *ngIf="!issueDetails.description">NO DESCRIPTION PROVIDED</p>
   </div>
 </ng-container>
