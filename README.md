@@ -1,27 +1,59 @@
-# GitlabFrontend
+# Angular Boilerplate
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.5.
+- [Angular Boilerplate](#gitlab-helper)
+  - [Installation](#installation)
+  - [Scripts](#scripts)
+    - [Development server](#development-server)
+    - [Development build](#development-build)
+    - [Production build (SSR)](#production-build)
+    - [Linting](#linting)
+    - [Unit tests](#unit-tests)
+    - [Documentation](#documentation)
+  - [Authors](#authors)
+  - [License](#license)
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Upewnij się że masz zainstalowanego [Node](https://nodejs.org/en/ 'Node') oraz [Angular CLI](https://github.com/angular/angular-cli#installation 'Angular CLI')
 
-## Code scaffolding
+Po pobraniu repozytorium uruchom komendę `npm install` w katalogu z aplikacją w celu zainstalowania zależności
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Skrypty
 
-## Build
+### Serwer developerski
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+`npm start`
 
-## Running unit tests
+Aplikacja zostanie uruchomiona pod adresem: http://localhost:4200
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Zbudowanie aplikacji w wersji deweloperskiej
 
-## Running end-to-end tests
+`npm run build`
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Kod docelowy po zbudowaniu zostanie umieszczony w katalogu `dist/apps/gitlab-helper/`
 
-## Further help
+### Zbudowanie aplikacji w wersji produkcyjnej
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+`npm run build:prod`
+
+Kod docelowy po zbudowaniu zostanie umieszczony w katalogu `dist/apps/gitlab-helper/`
+
+### Linting
+
+`npm run lint`
+
+### Testy jednostkowe
+
+`npm run test`
+
+### Generowanie dokumentacji
+
+`npm run compodoc`
+
+Dokumentacja zostanie wygenerowana w katalogu `documentation`
+
+## Aktualni autorzy
+
+- **Maciej Syguła** - _frontend_
+
+## Licencja
