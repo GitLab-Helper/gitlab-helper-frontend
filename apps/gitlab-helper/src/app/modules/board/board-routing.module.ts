@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { BoardComponent } from './board.component';
+import { BoardListComponent } from './board-list/board-list.component';
 
 /**
- * Board routes
+ * Editor routes
  */
 const routes: Routes = [
   {
     path: '',
-    component: BoardComponent,
+    component: BoardListComponent,
   },
 ];
 

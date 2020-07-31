@@ -1,6 +1,6 @@
-# Angular Boilerplate
+# GitLab Helper
 
-- [Angular Boilerplate](#gitlab-helper)
+- [GitLab Helper](#gitlab-helper)
   - [Installation](#installation)
   - [Scripts](#scripts)
     - [Development server](#development-server)
@@ -54,6 +54,6 @@ Dokumentacja zostanie wygenerowana w katalogu `documentation`
 
 ## Aktualni autorzy
 
-- **Maciej Syguła** - _frontend_
+- **Mateusz Gorczycki** - _frontend_
 
 ## Licencja
