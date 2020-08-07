@@ -1,6 +1,6 @@
 {
   "theme": "gitbook",
-  "name": "Angular Boilerplate",
+  "name": "GitLab Helper",
   "tsconfig": "apps/gitlab-helper/tsconfig.docs.json",
   "toggleMenuItems": ["all"],
   "disableSourceCode": false,

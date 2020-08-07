@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="container-inside">
+    <div class="header">
+      <p class="title">Hello!</p>
+      <p class="title-text">Lorem ipsum</p>
+    </div>
+    <div class="body">
+      <input type="text" placeholder="https://gitlab.com/ or another valid GitLab URL" [(value)]="gitlabURL" />
+      <input type="text" placeholder="Provide valid GitLab Access token" />
+      <a href="" class="token-redirect">How to generate gitlab token?</a>
+    </div>
+    <div class="buttons">
+      <button class="confirm-button" type="button">
+        <svg-icon src="/assets/images/plus.svg" [applyCss]="true"></svg-icon>
+        <p>Link with GitLab</p>
+      </button>
+    </div>
+  </div>
+</div>

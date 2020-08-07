@@ -72,3 +72,53 @@
 .side-line {
   margin: 0 23px 0 8px;
 }
+
+.select-button {
+  margin-left: 15px;
+  background-color: transparent;
+  color: #fdbc60;
+  border: 1px solid #dadce5;
+  border-radius: 5px;
+  height: 50px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  width: 200px;
+  &__pencil-icon {
+    margin: 0 14px 0 18px;
+  }
+}
+
+.body {
+  width: calc(100% - 100px);
+  min-height: calc(100% - 100px);
+  margin-left: 100px;
+  background-color: #f8f8fb;
+  max-height: calc(100% - 100px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__empty {
+    &__title {
+      margin: 0;
+      font-size: 70px;
+      margin-bottom: 25px;
+      color: #a6acbe;
+    }
+    &__pick {
+      margin: 0;
+      font-size: 35px;
+      color: #a6acbe;
+    }
+  }
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.issues-container {
+  max-width: 100%;
+  max-height: 100%;
+}
