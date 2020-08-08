@@ -51,6 +51,11 @@ export class ErrorInterceptor implements HttpInterceptor {
     );
   }
 
+  /**
+   * Handles 401 errors and refresh token
+   * @param request Request
+   * @param	next Next
+   */
   private handle401Error(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
     if (!this.isRefreshing) {
       this.isRefreshing = true;
@@ -81,6 +86,9 @@ export class ErrorInterceptor implements HttpInterceptor {
     }
   }
 
+  /**
+   * Refresh token
+   */
   private refreshToken(): Observable<any> {
     const headers = new HttpHeaders({ Authorization: 'Bearer ' + this.authService.getRefreshToken() });
     return this.http
@@ -98,6 +106,11 @@ export class ErrorInterceptor implements HttpInterceptor {
       );
   }
 
+  /**
+   * Set headers for authorization
+   * @param request Request
+   * @param token Token
+   */
   private addToken(request: HttpRequest<any>, token: { accessToken: string }): HttpRequest<any> {
     if (token) {
       request = request.clone({

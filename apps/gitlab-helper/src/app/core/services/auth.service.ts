@@ -6,12 +6,25 @@ import { map } from 'rxjs/operators';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 
+/**
+ * Auth service
+ */
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  /**
+   * Creates an instance of AuthService
+   * @param http Http client
+   * @param cookieService Cookie service
+   */
   constructor(private http: HttpClient, private cookieService: CookieService) {}
 
+  /**
+   * Get token and set cookies
+   * @param authForm Auth form
+   * @return Token informations
+   */
   public getToken(authForm: FormData): Observable<Auth> {
     return this.http.post<Auth>(`${AppConfigService.config.api}auth/token`, authForm).pipe(
       map((user: any) => {
@@ -22,14 +35,25 @@ export class AuthService {
     );
   }
 
+  /**
+   * Get access token from cookies
+   */
   public getAccessToken(): string {
     return this.cookieService.get('accessToken') || '';
   }
 
+  /**
+   * Get refresh token from cookies
+   */
   public getRefreshToken(): string {
     return this.cookieService.get('refreshToken') || '';
   }
 
+  /**
+   * Set access token in cookies
+   * @param accessToken Access token
+   * @param expiresInMinutes Cookie life time in minutes
+   */
   public setAccessToken(accessToken: string, expiresInMinutes: number): void {
     const oneDayInXMinutes = 1 / 24 / (60 / expiresInMinutes);
     if (window.location.protocol === 'https:') {
@@ -47,6 +71,10 @@ export class AuthService {
     }
   }
 
+  /**
+   * Set refresh token in cookies
+   * @param refreshToken Refresh token
+   */
   private setRefreshToken(refreshToken: string): void {
     const oneHourInDay = 1 / 24;
     if (window.location.protocol === 'https:') {
@@ -64,6 +92,9 @@ export class AuthService {
     }
   }
 
+  /**
+   * Clear cookies
+   */
   private clearCookies(): void {
     this.cookieService.delete('accessToken', '/', window.location.hostname);
     this.cookieService.delete('refreshToken', '/', window.location.hostname);
