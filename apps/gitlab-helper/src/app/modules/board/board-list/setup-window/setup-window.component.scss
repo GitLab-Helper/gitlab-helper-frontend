@@ -1,8 +1,10 @@
 .container {
   max-width: 900px;
+  min-width: 900px;
   max-height: 520px;
   border: 1px solid black;
   border-radius: 10px;
+  background-color: white;
 }
 
 .container-inside {
@@ -45,6 +47,7 @@
   font-size: 14px;
   font-weight: 900;
   border-radius: 5px;
+  cursor: pointer;
 
   svg-icon {
     margin: 17px 35px 17px 20px;

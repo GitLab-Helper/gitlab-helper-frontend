@@ -10,24 +10,24 @@
     </div>
     <div class="header-buttons">
       <button class="select-button">
-        <svg-icon class="select-button__pencil-icon" src="assets/images/pencil.svg" [applyCss]="true"></svg-icon>
+        <svg-icon class="select-button__pencil-icon" src="assets/images/pencil.svg" [applyClass]="true"></svg-icon>
         {{ 'Change group' }}
       </button>
       <button class="select-button">
-        <svg-icon class="select-button__pencil-icon" src="assets/images/pencil.svg" [applyCss]="true"></svg-icon>
+        <svg-icon class="select-button__pencil-icon" src="assets/images/pencil.svg" [applyClass]="true"></svg-icon>
         {{ 'Change board' }}
       </button>
       <button class="select-button">
-        <svg-icon class="select-button__pencil-icon" src="assets/images/pencil.svg" [applyCss]="true"></svg-icon>
+        <svg-icon class="select-button__pencil-icon" src="assets/images/pencil.svg" [applyClass]="true"></svg-icon>
         {{ 'Change assignee' }}
       </button>
-      <svg-icon class="side-line" src="assets/images/line.svg" [applyCss]="true"></svg-icon>
+      <svg-icon class="side-line" src="assets/images/line.svg" [applyClass]="true"></svg-icon>
     </div>
   </div>
 
   <div class="body">
     <gitlab-helper-setup-window *ngIf="!setupComplete"></gitlab-helper-setup-window>
-    <div class="body__empty">
+    <div class="body__empty" *ngIf="setupComplete">
       <p class="body__empty__title">This board is empty!</p>
       <p class="body__empty__pick">Please pick different one or add new task.</p>
     </div>
@@ -38,7 +38,7 @@
   <div class="settings-bar">
     <div class="settings-container">
       <button class="settings-button" type="button">
-        <svg-icon src="assets/images/settings.svg" [applyCss]="true"></svg-icon>
+        <svg-icon src="assets/images/settings.svg" [applyClass]="true"></svg-icon>
       </button>
     </div>
   </div>
