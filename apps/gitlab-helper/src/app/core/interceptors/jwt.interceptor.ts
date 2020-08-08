@@ -10,7 +10,7 @@ import { AuthService } from '../services/auth.service';
 export class JwtInterceptor implements HttpInterceptor {
   /**
    * Jwt interceptor constructor
-   * @param authenticationService Authentication service
+   * @param authService Auth service
    */
   constructor(private authService: AuthService) {}
 

@@ -21,7 +21,7 @@ export class ErrorInterceptor implements HttpInterceptor {
   /**
    * Is refreshing token
    */
-  isRefreshing = false;
+  private isRefreshing = false;
   /**
    * Subject for refresh token
    */
@@ -29,7 +29,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   /**
    * Error inteceptor constructor
-   * @param authenticationService Authentication service
+   * @param authService Auth service
    * @param http Http client
    */
   constructor(private authService: AuthService, private http: HttpClient) {}
