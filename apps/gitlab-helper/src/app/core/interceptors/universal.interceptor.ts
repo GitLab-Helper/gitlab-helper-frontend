@@ -1,6 +1,5 @@
 import { Injectable, Inject, Optional } from '@angular/core';
 import { HttpInterceptor, HttpHandler, HttpRequest, HttpEvent } from '@angular/common/http';
-
 import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { Request } from 'express';
 import { Observable } from 'rxjs';
@@ -30,8 +29,8 @@ export class UniversalInterceptor implements HttpInterceptor {
 
   /**
    * Change relative request URL to absolute
-   * @param req
-   * @param next
+   * @param req Request
+   * @param next Next
    * @returns Request
    */
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

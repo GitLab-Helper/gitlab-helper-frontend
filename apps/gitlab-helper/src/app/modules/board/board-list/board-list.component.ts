@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GroupsService } from '@app/core/services/groups.service';
 import { Groups } from '@app/core/interfaces/groups';
+import { AuthService } from '@app/core/services/auth.service';
 
 @Component({
   selector: 'gitlab-helper-board-list',
@@ -8,12 +9,13 @@ import { Groups } from '@app/core/interfaces/groups';
   styleUrls: ['./board-list.component.scss'],
 })
 export class BoardListComponent implements OnInit {
-  public setupComplete = true;
+  public setupComplete = false;
   public groups: Groups;
 
-  constructor(private groupService: GroupsService) {}
+  constructor(private groupService: GroupsService, private authService: AuthService) {}
 
   ngOnInit() {
+    this.setupComplete = this.authService.getRefreshToken() !== '';
     this.getGroups();
   }
 
