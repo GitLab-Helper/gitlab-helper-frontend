@@ -10,8 +10,15 @@
         name="gitlabURL"
         placeholder="https://gitlab.com/ or another valid GitLab URL"
         [(ngModel)]="gitlabURL"
+        autocomplete="on"
       />
-      <input type="text" name="gitlabToken" placeholder="Provide valid GitLab Access token" [(ngModel)]="gitlabToken" />
+      <input
+        type="text"
+        name="gitlabToken"
+        placeholder="Provide valid GitLab Access token"
+        [(ngModel)]="gitlabToken"
+        autocomplete="on"
+      />
       <a href="" class="token-redirect">How to generate gitlab token?</a>
     </div>
     <div class="buttons">

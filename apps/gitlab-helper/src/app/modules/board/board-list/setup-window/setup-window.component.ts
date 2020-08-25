@@ -15,7 +15,9 @@ export class SetupWindowComponent {
 
   public getAuthorization() {
     const authForm: FormData = this.createForm(this.gitlabURL, this.gitlabToken);
-    this.authService.getToken(authForm).subscribe((response: Auth) => {});
+    this.authService.getToken(authForm).subscribe((response: Auth) => {
+      location.reload();
+    });
   }
 
   private createForm(gitlabURL: string, gitlabToken: string) {

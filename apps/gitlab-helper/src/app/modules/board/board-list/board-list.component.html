@@ -27,7 +27,8 @@
 
   <div class="body">
     <gitlab-helper-setup-window *ngIf="!setupComplete"></gitlab-helper-setup-window>
-    <div class="body__empty" *ngIf="setupComplete">
+    <gitlab-helper-settings *ngIf="showSettings && setupComplete"></gitlab-helper-settings>
+    <div class="body__empty" *ngIf="setupComplete && !showSettings">
       <p class="body__empty__title">This board is empty!</p>
       <p class="body__empty__pick">Please pick different one or add new task.</p>
     </div>
@@ -37,9 +38,11 @@
 
   <div class="settings-bar">
     <div class="settings-container">
-      <button class="settings-button" type="button">
+      <button class="settings-button" type="button" (click)="showSettings = !showSettings">
         <svg-icon src="assets/images/settings.svg" [applyClass]="true"></svg-icon>
       </button>
     </div>
   </div>
 </div>
+
+<ng-container *ngIf="!showSettings"> </ng-container>
