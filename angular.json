@@ -38,6 +38,11 @@
                 "glob": "config.json",
                 "input": "apps/gitlab-helper/src/config/",
                 "output": "/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./resources/styles/fonts/",
+                "output": "/fonts/"
               }
             ],
             "styles": [
