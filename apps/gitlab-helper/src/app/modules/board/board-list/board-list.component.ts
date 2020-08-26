@@ -15,17 +15,25 @@ import { AuthService } from '@app/core/services/auth.service';
 })
 export class BoardListComponent implements OnInit {
   /**
-   * Is setup complete
-   */
-  public setupComplete = false;
-  /**
    * Groups
    */
   public groups: Groups;
   /**
-   * Show settings
+   * Is setup complete
+   */
+  public setupComplete = false;
+  /**
+   * Is settings window open
    */
   public showSettings = false;
+  /**
+   * Is groups window open
+   */
+  public showGroups = false;
+  /**
+   * Is background blur active
+   */
+  public blurBackground = false;
 
   /**
    * Creates an instance of BoardListComponent.
@@ -43,9 +51,32 @@ export class BoardListComponent implements OnInit {
   }
 
   /**
+   * Open choose group window
+   */
+  public showGroupsDropdown() {
+    this.setBlur();
+    this.showGroups = true;
+  }
+
+  /**
+   * Close all select window and disable blur
+   */
+  public closeAllSelect() {
+    this.setBlur();
+    this.showGroups = false;
+  }
+
+  /**
+   * Set blur in at background
+   */
+  private setBlur() {
+    this.blurBackground = !this.blurBackground;
+  }
+
+  /**
    * Fetch groups
    */
-  getGroups() {
+  private getGroups() {
     this.groupService.getGroups().subscribe((response: Groups) => {
       this.groups = response;
     });

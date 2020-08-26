@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="header-buttons">
-      <button class="select-button">
+      <button class="select-button" (click)="showGroupsDropdown()">
         <svg-icon class="select-button__pencil-icon" src="assets/images/pencil.svg" [applyClass]="true"></svg-icon>
         {{ 'Change group' }}
       </button>
@@ -45,4 +45,8 @@
   </div>
 </div>
 
-<ng-container *ngIf="!showSettings"> </ng-container>
+<div class="blur" *ngIf="blurBackground" (click)="closeAllSelect()"></div>
+
+<div class="change-group" *ngIf="showGroups">
+  <gitlab-helper-select-window [title]="'Group'" [listOfElements]="groups"></gitlab-helper-select-window>
+</div>

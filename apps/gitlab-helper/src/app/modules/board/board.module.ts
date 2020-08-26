@@ -6,9 +6,10 @@ import { BoardListComponent } from './board-list/board-list.component';
 import { SharedModule } from '@app/shared/shared.module';
 import { SetupWindowComponent } from './board-list/setup-window/setup-window.component';
 import { SettingsComponent } from './board-list/settings/settings.component';
+import { SelectWindowComponent } from './board-list/select-window/select-window.component';
 
 @NgModule({
   imports: [CommonModule, BoardRoutingModule, SharedModule],
-  declarations: [BoardComponent, BoardListComponent, SetupWindowComponent, SettingsComponent],
+  declarations: [BoardComponent, BoardListComponent, SetupWindowComponent, SettingsComponent, SelectWindowComponent],
 })
 export class BoardModule {}

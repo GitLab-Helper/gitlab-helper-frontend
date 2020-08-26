@@ -31,7 +31,7 @@ export class SettingsComponent {
   /**
    * Change current settings of gitlab
    */
-  changeSettings() {
+  public changeSettings() {
     const authForm = this.createForm(this.gitlabURL, this.gitlabToken);
     this.authService.getToken(authForm).subscribe((response: Auth) => {
       location.reload();
