@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { GroupsService } from '@app/core/services/groups.service';
-import { Groups } from '@app/core/interfaces/groups';
 import { AuthService } from '@app/core/services/auth.service';
+import { Group } from '@app/core/interfaces/group';
+import { Board } from '@app/core/interfaces/board';
+import { Assignee } from '@app/core/interfaces/assignee';
 
 /**
  * Board list component
@@ -17,7 +19,19 @@ export class BoardListComponent implements OnInit {
   /**
    * Groups
    */
-  public groups: Groups;
+  public groups: Group[];
+  /**
+   * Boards
+   */
+  public boards: Board[];
+  /**
+   * Assignees
+   */
+  public assignees: Assignee[];
+  /**
+   * Is background blur active
+   */
+  public blurBackground = false;
   /**
    * Is setup complete
    */
@@ -31,9 +45,29 @@ export class BoardListComponent implements OnInit {
    */
   public showGroups = false;
   /**
-   * Is background blur active
+   * Is boards window open
    */
-  public blurBackground = false;
+  public showBoards = false;
+  /**
+   * Is assignees window open
+   */
+  public showAssignees = false;
+  /**
+   * Show issues check
+   */
+  public showIssues = false;
+  /**
+   * Currently choosen group
+   */
+  public currentGroup: Group;
+  /**
+   * Currently choosen group
+   */
+  public currentBoard: Board;
+  /**
+   * Currently choosen assignee
+   */
+  public currentAssignee: Assignee;
 
   /**
    * Creates an instance of BoardListComponent.
@@ -45,7 +79,7 @@ export class BoardListComponent implements OnInit {
   /**
    * @ignore
    */
-  ngOnInit() {
+  ngOnInit(): void {
     this.setupComplete = this.authService.getRefreshToken() !== '';
     this.getGroups();
   }
@@ -53,32 +87,87 @@ export class BoardListComponent implements OnInit {
   /**
    * Open choose group window
    */
-  public showGroupsDropdown() {
+  public showGroupsDropdown(): void {
     this.setBlur();
     this.showGroups = true;
   }
 
   /**
-   * Close all select window and disable blur
+   * Open choose board window
    */
-  public closeAllSelect() {
-    this.setBlur();
-    this.showGroups = false;
+  public showBoardsDropdown(): void {
+    if (this.boards) {
+      this.setBlur();
+      this.showBoards = true;
+    }
   }
 
   /**
-   * Set blur in at background
+   * Open choose asignee window
    */
-  private setBlur() {
-    this.blurBackground = !this.blurBackground;
+  public showAsigneesDropdown(): void {
+    this.setBlur();
+    this.showAssignees = true;
+  }
+
+  /**
+   * Close all select window and disable blur
+   */
+  public closeAllSelect(): void {
+    this.setBlur();
+    this.showGroups = false;
+    this.showBoards = false;
+    this.showAssignees = false;
+  }
+
+  /**
+   * Fetch group details from API
+   * @param eventGroup Event group
+   */
+  public getGroup(eventGroup: Group): void {
+    this.currentGroup = eventGroup;
+    this.groupService.getBoardsByGroupId(eventGroup.id).subscribe((response: Board[]) => {
+      this.boards = response;
+      this.closeAllSelect();
+    });
+  }
+
+  /**
+   * Fetch issues and labels from current board
+   * @param eventBoard Event board
+   */
+  public getIssuesAndAssignees(eventBoard: Board): void {
+    this.currentBoard = eventBoard;
+    this.groupService.getAssigneesByGroup(this.currentGroup.id).subscribe((response: Assignee[]) => {
+      this.assignees = response;
+      // console.log('assignees: ', this.assignees);
+    });
+    this.showIssues = true;
+    this.closeAllSelect();
+  }
+
+  /**
+   * Fetch filtered issues based on assignee
+   * @param eventAssignee Event assignee
+   */
+  public getIssuesByAssignee(eventAssignee: Assignee): void {
+    this.currentAssignee = eventAssignee;
+    this.closeAllSelect();
   }
 
   /**
    * Fetch groups
    */
-  private getGroups() {
-    this.groupService.getGroups().subscribe((response: Groups) => {
+  private getGroups(): void {
+    this.groupService.getGroups().subscribe((response: Group[]) => {
       this.groups = response;
     });
+  }
+
+  /**
+   * Set blur in at background
+   */
+  private setBlur(): void {
+    this.blurBackground = !this.blurBackground;
   }
 }

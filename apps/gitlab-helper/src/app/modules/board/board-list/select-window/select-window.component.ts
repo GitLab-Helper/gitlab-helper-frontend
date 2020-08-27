@@ -36,4 +36,8 @@ export class SelectWindowComponent implements OnInit {
    * @ignore
    */
   ngOnInit() {}
+
+  public emitSubject(element: any) {
+    this.choosenSubjectEventEmitter.emit(element);
+  }
 }

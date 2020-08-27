@@ -12,11 +12,11 @@ export class GroupsService {
     return this.http.get<any>(`${AppConfigService.config.api}groups/`);
   }
 
-  getGroupsById(id: any) {
+  getGroupById(id: any) {
     return this.http.get<any>(`${AppConfigService.config.api}groups/${id}/`);
   }
 
-  getGroupDetailsById(id: any) {
+  getBoardsByGroupId(id: any) {
     return this.http.get<any>(`${AppConfigService.config.api}groups/${id}/boards/`);
   }
 
