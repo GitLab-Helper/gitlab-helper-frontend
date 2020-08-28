@@ -14,5 +14,5 @@ jobs:
         uses: VaultVulp/gp-docker-action@1.1.6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          image-name: gitlabhelper
+          image-name: gitlabhelper-frontend
           dockerfile: Dockerfile
