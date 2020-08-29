@@ -55,6 +55,9 @@
     &__labels {
       display: flex;
       &__single {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         margin-right: 7px;
         border-radius: 25px;
         background-color: red;
@@ -63,6 +66,8 @@
         max-width: 70px;
         min-width: 70px;
         text-align: center;
+        font-size: 10px;
+        font-weight: 300;
       }
     }
 
