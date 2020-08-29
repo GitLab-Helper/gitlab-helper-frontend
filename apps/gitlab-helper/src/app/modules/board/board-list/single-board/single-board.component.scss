@@ -41,7 +41,7 @@
   border-radius: 10px;
 
   .issue-title {
-    margin: 10px 14px;
+    padding: 5px 14px 5px 14px;
     font-size: 15px;
     font-weight: 800;
     line-height: 24px;
@@ -50,7 +50,8 @@
   .issue-body {
     display: flex;
     justify-content: space-between;
-    margin: 0 14px 5px 14px;
+    align-items: center;
+    margin: 0 14px 10px 14px;
     &__labels {
       display: flex;
       &__single {
