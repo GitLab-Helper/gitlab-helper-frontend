@@ -1,0 +1,77 @@
+.container {
+  max-width: 400px;
+  min-width: 400px;
+  max-height: 100%;
+  min-height: calc(100vh - 162px);
+  overflow: auto;
+  border: 1px solid red;
+  border-radius: 10px;
+  margin: 30px 15px 30px 0;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  margin: 9px 13px 7px 19px;
+
+  .title {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 24px;
+    margin-bottom: 10px;
+  }
+
+  .counter {
+    font-size: 14px;
+    font-weight: 300;
+    color: #a6acbe;
+  }
+}
+
+.body {
+  min-width: 100%;
+}
+
+.single-issue {
+  width: calc(100% - 10px);
+  min-height: 66px;
+  max-height: 66px;
+  background-color: #ededf6;
+  margin: 0 5px 15px 5px;
+  border-radius: 10px;
+
+  .issue-title {
+    margin: 10px 14px;
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 24px;
+  }
+
+  .issue-body {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 14px 5px 14px;
+    &__labels {
+      display: flex;
+      &__single {
+        margin-right: 7px;
+        border-radius: 25px;
+        background-color: red;
+        min-height: 15px;
+        max-height: 15px;
+        max-width: 70px;
+        min-width: 70px;
+        text-align: center;
+      }
+    }
+
+    &__avatar {
+      margin-right: 15px;
+      img {
+        width: 20px;
+        height: 20px;
+        border-radius: 50px;
+      }
+    }
+  }
+}

@@ -7,9 +7,17 @@ import { SharedModule } from '@app/shared/shared.module';
 import { SetupWindowComponent } from './board-list/setup-window/setup-window.component';
 import { SettingsComponent } from './board-list/settings/settings.component';
 import { SelectWindowComponent } from './board-list/select-window/select-window.component';
+import { SingleBoardComponent } from './board-list/single-board/single-board.component';
 
 @NgModule({
   imports: [CommonModule, BoardRoutingModule, SharedModule],
-  declarations: [BoardComponent, BoardListComponent, SetupWindowComponent, SettingsComponent, SelectWindowComponent],
+  declarations: [
+    BoardComponent,
+    BoardListComponent,
+    SetupWindowComponent,
+    SettingsComponent,
+    SelectWindowComponent,
+    SingleBoardComponent,
+  ],
 })
 export class BoardModule {}
