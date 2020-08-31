@@ -1,24 +1,26 @@
-<div class="container">
+<div class="container" [ngStyle]="{ border: '1px solid ' + singleBoard?.label?.color }">
   <div class="header">
     <div class="title">
-      {{ currentGroup?.name ? currentGroup?.name : 'To do' }}
+      {{ singleBoard?.label.name ? singleBoard?.label.name : 'Undefined' }}
     </div>
 
-    <div class="counter">
-      {{ 'board.tasks' | translate }}
-    </div>
+    <div class="counter">{{ 'board.tasks' | translate }} {{ issues?.length }}</div>
   </div>
 
   <div class="body">
-    <div class="single-issue" *ngFor="let issue of [0, 1, 2, 3, 4]">
+    <div class="single-issue" *ngFor="let issue of issues; let i = index">
       <div class="issue-title">
-        {{ '(2) Widok statystyk - spięcie z backendem' }}
+        {{ issue?.title }}
       </div>
 
       <div class="issue-body">
         <div class="issue-body__labels">
-          <div class="issue-body__labels__single" *ngFor="let label of [0, 1, 2, 3]">
-            {{ 'DevOps' }}
+          <div
+            class="issue-body__labels__single"
+            *ngFor="let label of issue.labels"
+            [ngStyle]="{ 'background-color': label.color, color: label.text_color }"
+          >
+            {{ label?.name }}
           </div>
         </div>
 

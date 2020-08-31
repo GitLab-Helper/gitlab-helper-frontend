@@ -1,7 +1,7 @@
 {
   "extends": "../../tslint.json",
   "rules": {
-    "directive-selector": [true, "attribute", "angularBoilerplate", "camelCase"],
+    "directive-selector": [true, "attribute", "gitlab-helper", "camelCase"],
     "component-selector": [true, "element", "gitlab-helper", "kebab-case"]
   },
   "linterOptions": {

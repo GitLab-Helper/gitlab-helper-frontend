@@ -34,7 +34,11 @@
     </div>
 
     <div class="issues-container" *ngIf="showIssues">
-      <gitlab-helper-single-board [currentGroup]="currentGroup"></gitlab-helper-single-board>
+      <gitlab-helper-single-board
+        [currentGroup]="currentGroup"
+        [singleBoard]="board"
+        *ngFor="let board of currentBoard.lists"
+      ></gitlab-helper-single-board>
     </div>
   </div>
 

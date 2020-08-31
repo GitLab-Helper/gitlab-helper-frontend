@@ -28,6 +28,7 @@ export class BoardListComponent implements OnInit {
    * Assignees
    */
   public assignees: Assignee[];
+  public labels: any[];
   /**
    * Is background blur active
    */
@@ -81,7 +82,14 @@ export class BoardListComponent implements OnInit {
    */
   ngOnInit(): void {
     this.setupComplete = this.authService.getRefreshToken() !== '';
+    // this.initForDeployment();
     this.getGroups();
+  }
+
+  public getLabelsForGroup(id: any) {
+    this.groupService.getLabelsByGroup(id).subscribe((response: any) => {
+      this.labels = response;
+    });
   }
 
   /**
@@ -141,9 +149,9 @@ export class BoardListComponent implements OnInit {
     this.groupService.getAssigneesByGroup(this.currentGroup.id).subscribe((response: Assignee[]) => {
       this.assignees = response;
       // console.log('assignees: ', this.assignees);
+      this.showIssues = true;
+      this.closeAllSelect();
     });
-    this.showIssues = true;
-    this.closeAllSelect();
   }
 
   /**

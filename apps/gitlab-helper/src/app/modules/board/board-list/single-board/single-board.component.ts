@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Group } from '@app/core/interfaces/group';
+import { SingleBoard } from '@app/core/interfaces/single-board';
+import { GroupsService } from '@app/core/services/groups.service';
 
 @Component({
   selector: 'gitlab-helper-single-board',
@@ -7,9 +9,19 @@ import { Group } from '@app/core/interfaces/group';
   styleUrls: ['./single-board.component.scss'],
 })
 export class SingleBoardComponent implements OnInit {
-  public currentGroup: Group;
+  @Input() public currentGroup: Group;
+  @Input() public singleBoard: SingleBoard;
+  public issues: any[];
 
-  constructor() {}
+  constructor(private groupsService: GroupsService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getIssues();
+  }
+
+  getIssues() {
+    this.groupsService.getIssues(this.currentGroup.id, this.singleBoard.label.name).subscribe((response: any) => {
+      this.issues = response;
+    });
+  }
 }
