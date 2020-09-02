@@ -20,10 +20,9 @@ export class GroupsService {
     return this.http.get<any>(`${AppConfigService.config.api}groups/${id}/boards/`);
   }
 
-  getIssues(groupId: any, label: string, filteredBoard?: any, assigneeId?: number) {
+  getIssues(groupId: any, label: string, assigneeId?: number) {
     if (assigneeId > 0) {
       return this.http.get<any>(
-        // `${AppConfigService.config.api}groups/${groupId}/issues/?labels=${label},${filteredBoard}&assignee_id=${assigneeId}&with_labels_details=true`
         `${AppConfigService.config.api}groups/${groupId}/issues/?labels=${label}&assignee_id=${assigneeId}&with_labels_details=true`
       );
     } else {

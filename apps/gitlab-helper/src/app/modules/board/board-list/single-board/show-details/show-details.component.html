@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="container-inside">
+    <div class="header">
+      <p class="title">{{ issueDetails?.title }}</p>
+    </div>
+    <div class="body">
+      <markdown class="variable-binding" [data]="issueDetails.description"></markdown>
+    </div>
+    <div class="buttons"></div>
+  </div>
+</div>

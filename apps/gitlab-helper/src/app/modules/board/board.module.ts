@@ -8,6 +8,7 @@ import { SetupWindowComponent } from './board-list/setup-window/setup-window.com
 import { SettingsComponent } from './board-list/settings/settings.component';
 import { SelectWindowComponent } from './board-list/select-window/select-window.component';
 import { SingleBoardComponent } from './board-list/single-board/single-board.component';
+import { ShowDetailsComponent } from './board-list/single-board/show-details/show-details.component';
 
 @NgModule({
   imports: [CommonModule, BoardRoutingModule, SharedModule],
@@ -18,6 +19,7 @@ import { SingleBoardComponent } from './board-list/single-board/single-board.com
     SettingsComponent,
     SelectWindowComponent,
     SingleBoardComponent,
+    ShowDetailsComponent,
   ],
 })
 export class BoardModule {}

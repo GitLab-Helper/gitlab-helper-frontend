@@ -8,7 +8,7 @@
   </div>
 
   <div class="body">
-    <div class="single-issue" *ngFor="let issue of issues; let i = index">
+    <div class="single-issue" *ngFor="let issue of issues; let i = index" (click)="showDetailsOfIssue(issue)">
       <div class="issue-title">
         {{ issue?.title }}
       </div>
@@ -25,9 +25,12 @@
         </div>
 
         <div class="issue-body__avatar">
-          <img src="/assets/images/senko.jpg" alt="Avatar" />
+          <img src="/assets/images/no-person.png" alt="Avatar" *ngIf="!issue.assignees[0]?.avatar_url" />
+          <img [src]="issue.assignees[0].avatar_url" alt="Avatar" *ngIf="issue.assignees[0]?.avatar_url" />
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<gitlab-helper-show-details [issueDetails]="issue" *ngIf="showDetails"></gitlab-helper-show-details>

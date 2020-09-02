@@ -94,3 +94,10 @@
 ::-webkit-scrollbar-thumb {
   background: #888;
 }
+
+gitlab-helper-show-details {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  z-index: 5;
+}
