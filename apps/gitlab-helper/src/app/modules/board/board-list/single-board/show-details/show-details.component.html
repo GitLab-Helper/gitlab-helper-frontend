@@ -1,11 +1,55 @@
 <div class="container">
   <div class="container-inside">
+    <div class="status">
+      <div class="status__label">
+        Open
+      </div>
+      <p class="status__created-at">Opened at {{ issueDetails?.created_at | date: 'dd.MM.yyyy' }} by</p>
+      <p class="status__avatar">
+        <img src="/assets/images/no-person.png" alt="Avatar" *ngIf="!issueDetails.author?.avatar_url" />
+        <img [src]="issueDetails.author.avatar_url" alt="Avatar" *ngIf="issueDetails.author?.avatar_url" />
+      </p>
+    </div>
     <div class="header">
       <p class="title">{{ issueDetails?.title }}</p>
     </div>
+
     <div class="body">
       <markdown class="variable-binding" [data]="issueDetails.description"></markdown>
     </div>
     <div class="buttons"></div>
+  </div>
+
+  <div class="container-inside-panel">
+    <div class="assignees">
+      <p class="assignees__title">Assignees:</p>
+      <div class="assignees__container">
+        <div class="assignees__container__avatar">
+          <img src="/assets/images/no-person.png" alt="Avatar" *ngIf="!issueDetails.assignees[0]?.avatar_url" />
+          <img
+            [src]="issueDetails.assignees[0].avatar_url"
+            alt="Avatar"
+            *ngIf="issueDetails.assignees[0]?.avatar_url"
+          />
+        </div>
+
+        <div class="assignees__container__description">
+          {{ (issueDetails?.assignees)[0]?.name }}
+        </div>
+      </div>
+    </div>
+
+    <div class="labels">
+      <p class="labels__title">Labels:</p>
+      <div class="labels__container">
+        <div
+          class="labels__single"
+          *ngFor="let label of issueDetails.labels"
+          [ngStyle]="{ 'background-color': label.color, color: label.text_color }"
+        >
+          {{ label?.name }}
+        </div>
+      </div>
+    </div>
   </div>
 </div>

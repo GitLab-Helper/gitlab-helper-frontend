@@ -51,4 +51,8 @@ export class SingleBoardComponent implements OnInit, OnChanges {
       this.previousAssignee = this.assignee;
     }
   }
+
+  closeOnClick() {
+    this.showDetails = false;
+  }
 }
