@@ -16,7 +16,7 @@ export class SettingsComponent {
   /**
    * GitLab URL
    */
-  public gitlabURL = '';
+  public gitlabURL = 'https://gitlab.com/';
   /**
    * GitLab token
    */

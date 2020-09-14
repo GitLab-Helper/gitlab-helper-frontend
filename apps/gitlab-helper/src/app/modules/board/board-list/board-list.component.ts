@@ -82,7 +82,6 @@ export class BoardListComponent implements OnInit {
    */
   ngOnInit(): void {
     this.setupComplete = this.authService.getRefreshToken() !== '';
-    // this.initForDeployment();
     this.getGroups();
   }
 
@@ -90,6 +89,14 @@ export class BoardListComponent implements OnInit {
     this.groupService.getLabelsByGroup(id).subscribe((response: any) => {
       this.labels = response;
     });
+  }
+
+  /**
+   * Show settings window
+   */
+  public showSettingsWithBlur(): void {
+    this.setBlur();
+    this.showSettings = true;
   }
 
   /**
@@ -126,6 +133,7 @@ export class BoardListComponent implements OnInit {
     this.showGroups = false;
     this.showBoards = false;
     this.showAssignees = false;
+    this.showSettings = false;
   }
 
   /**
@@ -148,6 +156,14 @@ export class BoardListComponent implements OnInit {
     this.currentBoard = eventBoard;
     this.groupService.getAssigneesByGroup(this.currentGroup.id).subscribe((response: Assignee[]) => {
       this.assignees = response;
+      this.assignees[0] = {
+        id: 0,
+        name: 'No user',
+        username: 'null.user',
+        state: 'active',
+        avatar_url: '',
+        web_url: '',
+      };
       // console.log('assignees: ', this.assignees);
       this.showIssues = true;
       this.closeAllSelect();

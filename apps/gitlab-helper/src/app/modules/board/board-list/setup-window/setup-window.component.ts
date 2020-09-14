@@ -8,7 +8,7 @@ import { Auth } from '@app/core/interfaces/auth';
   styleUrls: ['./setup-window.component.scss'],
 })
 export class SetupWindowComponent {
-  public gitlabURL = '';
+  public gitlabURL = 'https://gitlab.com/';
   public gitlabToken = '';
 
   constructor(private authService: AuthService) {}

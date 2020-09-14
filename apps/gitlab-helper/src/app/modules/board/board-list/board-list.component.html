@@ -13,12 +13,34 @@
         <svg-icon class="select-button__pencil-icon" src="assets/images/pencil.svg" [applyClass]="true"></svg-icon>
         {{ 'Change group' }}
       </button>
-      <button class="select-button" (click)="showBoardsDropdown()">
-        <svg-icon class="select-button__pencil-icon" src="assets/images/pencil.svg" [applyClass]="true"></svg-icon>
+      <button class="select-button" (click)="showBoardsDropdown()" [disabled]="!boards">
+        <svg-icon
+          class="select-button__pencil-icon"
+          src="assets/images/pencil.svg"
+          [applyClass]="true"
+          *ngIf="boards"
+        ></svg-icon>
+        <svg-icon
+          class="select-button__pencil-icon"
+          src="assets/images/pencil-grey.svg"
+          [applyClass]="true"
+          *ngIf="!boards"
+        ></svg-icon>
         {{ 'Change board' }}
       </button>
-      <button class="select-button" (click)="showAsigneesDropdown()">
-        <svg-icon class="select-button__pencil-icon" src="assets/images/pencil.svg" [applyClass]="true"></svg-icon>
+      <button class="select-button" (click)="showAsigneesDropdown()" [disabled]="!assignees">
+        <svg-icon
+          class="select-button__pencil-icon"
+          src="assets/images/pencil.svg"
+          [applyClass]="true"
+          *ngIf="assignees"
+        ></svg-icon>
+        <svg-icon
+          class="select-button__pencil-icon"
+          src="assets/images/pencil-grey.svg"
+          [applyClass]="true"
+          *ngIf="!assignees"
+        ></svg-icon>
         {{ 'Change assignee' }}
       </button>
       <svg-icon class="side-line" src="assets/images/line.svg" [applyClass]="true"></svg-icon>
@@ -33,7 +55,7 @@
       <p class="body__empty__pick">Please pick different one or add new task.</p>
     </div>
 
-    <div class="issues-container" *ngIf="showIssues">
+    <div class="issues-container" *ngIf="showIssues && !showSettings">
       <gitlab-helper-single-board
         [currentGroup]="currentGroup"
         [singleBoard]="board"
@@ -45,7 +67,7 @@
 
   <div class="settings-bar">
     <div class="settings-container">
-      <button class="settings-button" type="button" (click)="showSettings = !showSettings">
+      <button class="settings-button" type="button" (click)="showSettingsWithBlur()">
         <svg-icon src="assets/images/settings.svg" [applyClass]="true"></svg-icon>
       </button>
     </div>

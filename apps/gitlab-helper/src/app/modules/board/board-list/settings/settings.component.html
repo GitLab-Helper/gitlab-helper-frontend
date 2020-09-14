@@ -8,7 +8,12 @@
       <input type="text" name="gitlabURL" placeholder="Provide valid GitLab URL" [(ngModel)]="gitlabURL" />
       <p class="change-gitlab">{{ 'settings.change_gitlab_token' | translate }}</p>
       <input type="text" name="gitlabToken" placeholder="Provide valid GitLab Access token" [(ngModel)]="gitlabToken" />
-      <a href="" class="token-redirect">How to generate gitlab token?</a>
+      <a
+        href="https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html"
+        target="_blank"
+        class="token-redirect"
+        >How to generate gitlab token?</a
+      >
     </div>
     <div class="buttons">
       <button class="confirm-button" type="button" (click)="changeSettings()">

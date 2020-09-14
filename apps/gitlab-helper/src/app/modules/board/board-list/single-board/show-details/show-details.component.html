@@ -1,17 +1,18 @@
 <div class="container">
   <div class="container-inside">
+    <div class="header">
+      <p class="title">{{ issueDetails?.title }}</p>
+    </div>
     <div class="status">
-      <div class="status__label">
+      <!-- <div class="status__label">
         Open
-      </div>
+      </div> -->
       <p class="status__created-at">Opened at {{ issueDetails?.created_at | date: 'dd.MM.yyyy' }} by</p>
       <p class="status__avatar">
         <img src="/assets/images/no-person.png" alt="Avatar" *ngIf="!issueDetails.author?.avatar_url" />
         <img [src]="issueDetails.author.avatar_url" alt="Avatar" *ngIf="issueDetails.author?.avatar_url" />
       </p>
-    </div>
-    <div class="header">
-      <p class="title">{{ issueDetails?.title }}</p>
+      {{ issueDetails?.author.name }}
     </div>
 
     <div class="body">
@@ -34,7 +35,7 @@
         </div>
 
         <div class="assignees__container__description">
-          {{ (issueDetails?.assignees)[0]?.name }}
+          {{ (issueDetails?.assignees)[0]?.name ? issueDetails.assignees[0].name : 'Unassigneed' }}
         </div>
       </div>
     </div>
@@ -50,6 +51,12 @@
           {{ label?.name }}
         </div>
       </div>
+    </div>
+
+    <div class="buttons">
+      <button type="button" class="close-button">
+        Close
+      </button>
     </div>
   </div>
 </div>

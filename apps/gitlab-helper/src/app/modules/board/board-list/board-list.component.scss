@@ -93,6 +93,10 @@
   }
 }
 
+.select-button:disabled {
+  color: #dadce5;
+}
+
 .body {
   width: calc(100% - 100px);
   min-height: calc(100% - 120px);

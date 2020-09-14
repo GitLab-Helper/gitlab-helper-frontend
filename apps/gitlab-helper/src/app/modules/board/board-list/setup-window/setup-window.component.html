@@ -19,7 +19,12 @@
         [(ngModel)]="gitlabToken"
         autocomplete="on"
       />
-      <a href="" class="token-redirect">How to generate gitlab token?</a>
+      <a
+        href="https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html"
+        target="_blank"
+        class="token-redirect"
+        >How to generate gitlab token?</a
+      >
     </div>
     <div class="buttons">
       <button class="confirm-button" type="button" (click)="getAuthorization()">
