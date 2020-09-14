@@ -45,6 +45,10 @@ export class SingleBoardComponent implements OnInit, OnChanges {
     this.showDetails = true;
   }
 
+  public closeDetailsWindow() {
+    this.showDetails = false;
+  }
+
   ngOnChanges(changes: SimpleChanges) {
     if (this.assignee !== undefined && this.assignee !== this.previousAssignee) {
       this.getIssuesByAssignee(this.assignee);

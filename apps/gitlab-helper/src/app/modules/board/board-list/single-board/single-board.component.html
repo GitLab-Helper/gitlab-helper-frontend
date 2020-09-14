@@ -32,5 +32,9 @@
     </div>
   </div>
 </div>
-<gitlab-helper-show-details [issueDetails]="issue" *ngIf="showDetails"></gitlab-helper-show-details>
+<gitlab-helper-show-details
+  [issueDetails]="issue"
+  *ngIf="showDetails"
+  (closeWindowEmitter)="closeDetailsWindow()"
+></gitlab-helper-show-details>
 <div class="on-click-close" (click)="closeOnClick()" *ngIf="showDetails"></div>
