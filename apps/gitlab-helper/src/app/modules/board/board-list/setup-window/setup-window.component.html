@@ -2,7 +2,7 @@
   <div class="container-inside">
     <div class="header">
       <p class="title">Hello!</p>
-      <p class="title-text">Lorem ipsum</p>
+      <p class="title-text">Set your GitLab URL and Access token and start using GitLab Helper.</p>
     </div>
     <div class="body">
       <input
@@ -11,13 +11,14 @@
         placeholder="https://gitlab.com/ or another valid GitLab URL"
         [(ngModel)]="gitlabURL"
         autocomplete="on"
+        (click)="cleanGitlabURL($event)"
       />
       <input
-        type="text"
+        type="password"
         name="gitlabToken"
         placeholder="Provide valid GitLab Access token"
         [(ngModel)]="gitlabToken"
-        autocomplete="on"
+        autocomplete="off"
       />
       <a
         href="https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html"

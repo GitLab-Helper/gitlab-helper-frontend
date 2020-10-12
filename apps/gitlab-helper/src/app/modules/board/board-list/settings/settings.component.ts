@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@app/core/services/auth.service';
 import { Auth } from '@app/core/interfaces/auth';
 
@@ -12,7 +12,7 @@ import { Auth } from '@app/core/interfaces/auth';
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss'],
 })
-export class SettingsComponent {
+export class SettingsComponent implements OnInit {
   /**
    * GitLab URL
    */
@@ -27,6 +27,12 @@ export class SettingsComponent {
    * @param authService Auth service
    */
   constructor(private authService: AuthService) {}
+
+  ngOnInit() {
+    const token = this.authService.getAccessToken();
+    const parsedToken = JSON.parse(window.atob(token.split('.')[1]));
+    this.gitlabURL = parsedToken.sub;
+  }
 
   /**
    * Change current settings of gitlab

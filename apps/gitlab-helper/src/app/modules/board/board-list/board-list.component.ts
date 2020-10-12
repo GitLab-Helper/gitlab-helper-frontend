@@ -145,6 +145,9 @@ export class BoardListComponent implements OnInit {
     this.groupService.getBoardsByGroupId(eventGroup.id).subscribe((response: Board[]) => {
       this.boards = response;
       this.closeAllSelect();
+      this.getIssuesAndAssignees(this.boards[0]);
+      this.showIssues = true;
+      this.closeAllSelect();
     });
   }
 
@@ -164,7 +167,6 @@ export class BoardListComponent implements OnInit {
         avatar_url: '',
         web_url: '',
       };
-      // console.log('assignees: ', this.assignees);
       this.showIssues = true;
       this.closeAllSelect();
     });

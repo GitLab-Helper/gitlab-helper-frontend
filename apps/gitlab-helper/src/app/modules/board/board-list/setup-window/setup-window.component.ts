@@ -20,6 +20,12 @@ export class SetupWindowComponent {
     });
   }
 
+  public cleanGitlabURL(event: any) {
+    if (event.target.value === 'https://gitlab.com/') {
+      this.gitlabURL = '';
+    }
+  }
+
   private createForm(gitlabURL: string, gitlabToken: string) {
     const formData = new FormData();
     formData.append('app_url', gitlabURL);
