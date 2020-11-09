@@ -1,7 +1,7 @@
 module.exports = {
-  name: 'gitlab-helper',
+  name: 'angular-clean-project-template',
   preset: '../../jest.config.js',
-  coverageDirectory: '../../coverage/apps/gitlab-helper',
+  coverageDirectory: '../../coverage/apps/angular-clean-project-template',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',

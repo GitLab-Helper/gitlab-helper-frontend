@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from '@app/core/services/language.service';
 
 @Component({
-  selector: 'gitlab-helper-root',
+  selector: 'angular-clean-project-template-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

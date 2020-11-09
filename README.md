@@ -1,6 +1,6 @@
 # Angular Boilerplate
 
-- [Angular Boilerplate](#gitlab-helper)
+- [Angular Boilerplate](#angular-clean-project-template)
   - [Installation](#installation)
   - [Scripts](#scripts)
     - [Development server](#development-server)
@@ -30,13 +30,13 @@ Aplikacja zostanie uruchomiona pod adresem: http://localhost:4200
 
 `npm run build`
 
-Kod docelowy po zbudowaniu zostanie umieszczony w katalogu `dist/apps/gitlab-helper/`
+Kod docelowy po zbudowaniu zostanie umieszczony w katalogu `dist/apps/angular-clean-project-template/`
 
 ### Zbudowanie aplikacji w wersji produkcyjnej
 
 `npm run build:prod`
 
-Kod docelowy po zbudowaniu zostanie umieszczony w katalogu `dist/apps/gitlab-helper/`
+Kod docelowy po zbudowaniu zostanie umieszczony w katalogu `dist/apps/angular-clean-project-template/`
 
 ### Linting
 

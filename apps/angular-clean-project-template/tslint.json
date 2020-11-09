@@ -2,7 +2,7 @@
   "extends": "../../tslint.json",
   "rules": {
     "directive-selector": [true, "attribute", "angularBoilerplate", "camelCase"],
-    "component-selector": [true, "element", "gitlab-helper", "kebab-case"]
+    "component-selector": [true, "element", "angular-clean-project-template", "kebab-case"]
   },
   "linterOptions": {
     "exclude": ["!**/*"]

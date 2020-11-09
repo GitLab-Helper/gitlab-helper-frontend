@@ -1,5 +1,5 @@
 {
-  "npmScope": "gitlab-helper",
+  "npmScope": "angular-clean-project-template",
   "affected": {
     "defaultBase": "master"
   },
@@ -22,12 +22,12 @@
     }
   },
   "projects": {
-    "gitlab-helper": {
+    "angular-clean-project-template": {
       "tags": []
     },
-    "gitlab-helper-e2e": {
+    "angular-clean-project-template-e2e": {
       "tags": [],
-      "implicitDependencies": ["gitlab-helper"]
+      "implicitDependencies": ["angular-clean-project-template"]
     }
   }
 }

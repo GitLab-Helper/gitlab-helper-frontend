@@ -1,6 +1,6 @@
 import { getGreeting } from '../support/app.po';
 
-describe('gitlab-helper', () => {
+describe('angular-clean-project-template', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should display welcome message', () => {
@@ -8,6 +8,6 @@ describe('gitlab-helper', () => {
     cy.login('my-email@something.com', 'myPassword');
 
     // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome to gitlab-helper!');
+    getGreeting().contains('Welcome to angular-clean-project-template!');
   });
 });

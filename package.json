@@ -1,5 +1,5 @@
 {
-  "name": "gitlab-helper",
+  "name": "angular-clean-project-template",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -30,10 +30,10 @@
     "prettier:check": "prettier --list-different \"./apps/**/*.{ts,js,html,scss}\"",
     "help": "nx help",
     "compodoc": "./node_modules/.bin/compodoc -c .compodocrc.json",
-    "dev:ssr": "ng run gitlab-helper:serve-ssr",
-    "serve:ssr": "node dist/gitlab-helper/server/main.js",
-    "build:ssr": "ng build --prod && ng run gitlab-helper:server:production",
-    "prerender": "ng run gitlab-helper:prerender"
+    "dev:ssr": "ng run angular-clean-project-template:serve-ssr",
+    "serve:ssr": "node dist/angular-clean-project-template/server/main.js",
+    "build:ssr": "ng build --prod && ng run angular-clean-project-template:server:production",
+    "prerender": "ng run angular-clean-project-template:prerender"
   },
   "private": true,
   "dependencies": {

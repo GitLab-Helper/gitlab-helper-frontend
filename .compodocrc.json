@@ -1,7 +1,7 @@
 {
   "theme": "gitbook",
   "name": "Angular Boilerplate",
-  "tsconfig": "apps/gitlab-helper/tsconfig.docs.json",
+  "tsconfig": "apps/angular-clean-project-template/tsconfig.docs.json",
   "toggleMenuItems": ["all"],
   "disableSourceCode": false,
   "disableDomTree": true,

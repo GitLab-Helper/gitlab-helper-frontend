@@ -1,29 +1,29 @@
 {
   "version": 1,
   "projects": {
-    "gitlab-helper": {
+    "angular-clean-project-template": {
       "projectType": "application",
       "schematics": {
         "@nrwl/angular:component": {
           "style": "scss"
         }
       },
-      "root": "apps/gitlab-helper",
-      "sourceRoot": "apps/gitlab-helper/src",
-      "prefix": "gitlab-helper",
+      "root": "apps/angular-clean-project-template",
+      "sourceRoot": "apps/angular-clean-project-template/src",
+      "prefix": "angular-clean-project-template",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/gitlab-helper/browser",
-            "index": "apps/gitlab-helper/src/index.html",
-            "main": "apps/gitlab-helper/src/main.ts",
-            "polyfills": "apps/gitlab-helper/src/polyfills.ts",
-            "tsConfig": "apps/gitlab-helper/tsconfig.app.json",
+            "outputPath": "dist/angular-clean-project-template/browser",
+            "index": "apps/angular-clean-project-template/src/index.html",
+            "main": "apps/angular-clean-project-template/src/main.ts",
+            "polyfills": "apps/angular-clean-project-template/src/polyfills.ts",
+            "tsConfig": "apps/angular-clean-project-template/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "apps/gitlab-helper/src/favicon.ico",
-              "apps/gitlab-helper/src/assets",
+              "apps/angular-clean-project-template/src/favicon.ico",
+              "apps/angular-clean-project-template/src/assets",
               {
                 "glob": "robots.txt",
                 "input": "./resources/assets",
@@ -36,14 +36,14 @@
               },
               {
                 "glob": "config.json",
-                "input": "apps/gitlab-helper/src/config/",
+                "input": "apps/angular-clean-project-template/src/config/",
                 "output": "/"
               }
             ],
             "styles": [
               "./node_modules/normalize.css/normalize.css",
               "resources/styles/styles.scss",
-              "apps/gitlab-helper/src/styles.scss",
+              "apps/angular-clean-project-template/src/styles.scss",
               {
                 "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
               }
@@ -54,12 +54,12 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/gitlab-helper/src/environments/environment.ts",
-                  "with": "apps/gitlab-helper/src/environments/environment.prod.ts"
+                  "replace": "apps/angular-clean-project-template/src/environments/environment.ts",
+                  "with": "apps/angular-clean-project-template/src/environments/environment.prod.ts"
                 },
                 {
-                  "replace": "apps/gitlab-helper/src/config/config.json",
-                  "with": "apps/gitlab-helper/src/config/config.prod.json"
+                  "replace": "apps/angular-clean-project-template/src/config/config.json",
+                  "with": "apps/angular-clean-project-template/src/config/config.prod.json"
                 }
               ],
               "optimization": true,
@@ -88,54 +88,57 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "gitlab-helper:build"
+            "browserTarget": "angular-clean-project-template:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "gitlab-helper:build:production"
+              "browserTarget": "angular-clean-project-template:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "gitlab-helper:build"
+            "browserTarget": "angular-clean-project-template:build"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/gitlab-helper/tsconfig.app.json", "apps/gitlab-helper/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!apps/gitlab-helper/**/*"]
+            "tsConfig": [
+              "apps/angular-clean-project-template/tsconfig.app.json",
+              "apps/angular-clean-project-template/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/angular-clean-project-template/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/gitlab-helper/jest.config.js",
-            "tsConfig": "apps/gitlab-helper/tsconfig.spec.json",
+            "jestConfig": "apps/angular-clean-project-template/jest.config.js",
+            "tsConfig": "apps/angular-clean-project-template/tsconfig.spec.json",
             "passWithNoTests": true,
-            "setupFile": "apps/gitlab-helper/src/test-setup.ts"
+            "setupFile": "apps/angular-clean-project-template/src/test-setup.ts"
           }
         },
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/gitlab-helper/server",
-            "main": "apps/gitlab-helper/server.ts",
-            "tsConfig": "apps/gitlab-helper/tsconfig.server.json"
+            "outputPath": "dist/angular-clean-project-template/server",
+            "main": "apps/angular-clean-project-template/server.ts",
+            "tsConfig": "apps/angular-clean-project-template/tsconfig.server.json"
           },
           "configurations": {
             "production": {
               "outputHashing": "media",
               "fileReplacements": [
                 {
-                  "replace": "apps/gitlab-helper/src/environments/environment.ts",
-                  "with": "apps/gitlab-helper/src/environments/environment.prod.ts"
+                  "replace": "apps/angular-clean-project-template/src/environments/environment.ts",
+                  "with": "apps/angular-clean-project-template/src/environments/environment.prod.ts"
                 },
                 {
-                  "replace": "apps/gitlab-helper/src/config/config.json",
-                  "with": "apps/gitlab-helper/src/config/config.prod.json"
+                  "replace": "apps/angular-clean-project-template/src/config/config.json",
+                  "with": "apps/angular-clean-project-template/src/config/config.prod.json"
                 }
               ],
               "sourceMap": false,
@@ -146,21 +149,21 @@
         "serve-ssr": {
           "builder": "@nguniversal/builders:ssr-dev-server",
           "options": {
-            "browserTarget": "gitlab-helper:build",
-            "serverTarget": "gitlab-helper:server"
+            "browserTarget": "angular-clean-project-template:build",
+            "serverTarget": "angular-clean-project-template:server"
           },
           "configurations": {
             "production": {
-              "browserTarget": "gitlab-helper:build:production",
-              "serverTarget": "gitlab-helper:server:production"
+              "browserTarget": "angular-clean-project-template:build:production",
+              "serverTarget": "angular-clean-project-template:server:production"
             }
           }
         },
         "prerender": {
           "builder": "@nguniversal/builders:prerender",
           "options": {
-            "browserTarget": "gitlab-helper:build:production",
-            "serverTarget": "gitlab-helper:server:production",
+            "browserTarget": "angular-clean-project-template:build:production",
+            "serverTarget": "angular-clean-project-template:server:production",
             "routes": ["/"]
           },
           "configurations": {
@@ -169,29 +172,29 @@
         }
       }
     },
-    "gitlab-helper-e2e": {
-      "root": "apps/gitlab-helper-e2e",
-      "sourceRoot": "apps/gitlab-helper-e2e/src",
+    "angular-clean-project-template-e2e": {
+      "root": "apps/angular-clean-project-template-e2e",
+      "sourceRoot": "apps/angular-clean-project-template-e2e/src",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@nrwl/cypress:cypress",
           "options": {
-            "cypressConfig": "apps/gitlab-helper-e2e/cypress.json",
-            "tsConfig": "apps/gitlab-helper-e2e/tsconfig.e2e.json",
-            "devServerTarget": "gitlab-helper:serve"
+            "cypressConfig": "apps/angular-clean-project-template-e2e/cypress.json",
+            "tsConfig": "apps/angular-clean-project-template-e2e/tsconfig.e2e.json",
+            "devServerTarget": "angular-clean-project-template:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "gitlab-helper:serve:production"
+              "devServerTarget": "angular-clean-project-template:serve:production"
             }
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/gitlab-helper-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/gitlab-helper-e2e/**/*"]
+            "tsConfig": ["apps/angular-clean-project-template-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/angular-clean-project-template-e2e/**/*"]
           }
         }
       }
@@ -216,5 +219,5 @@
       "framework": "angular"
     }
   },
-  "defaultProject": "gitlab-helper"
+  "defaultProject": "angular-clean-project-template"
 }

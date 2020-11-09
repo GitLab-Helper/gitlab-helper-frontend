@@ -7,12 +7,7 @@ const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: () => import('./modules/board/board.module').then((m) => m.BoardModule),
-      },
-    ],
+    children: [],
   },
 ];
 
